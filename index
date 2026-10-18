@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontDesk Dispatch | Automated Customer Service & AI Routing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#035485',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">FrontDesk Dispatch</span>
+                    <span class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">By BALI Technologies LLC</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#hero" class="hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact Us</a>
+            </nav>
+
+            <div>
+                <a href="#contact" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold text-sm shadow-md shadow-cyan-500/20 transition-all hover:scale-[1.02]">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-20 pb-24 overflow-hidden border-b border-slate-800/50">
+        <!-- Background Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-8">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Next-Gen Business Dispatch Automation
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-none max-w-4xl mx-auto mb-6">
+                Automated Dispatching, Customer Scheduling & <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">AI Front Desk Support</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+                Empower your service business with instant SMS dispatching, automated voice routing, and hands-free appointment bookings handled 24/7.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-base shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
+                    Request Dispatch Setup
+                </a>
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-semibold text-base transition-all">
+                    Explore Platform Features
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES / FEATURES SECTION -->
+    <section id="services" class="py-24 bg-slate-900/40 border-b border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-3">Core Capabilities</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Streamlined Operations for Modern Teams</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800/80 hover:border-slate-700 transition-all hover:shadow-xl hover:shadow-cyan-500/5 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Automated Phone & SMS Dispatch</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Instantly send real-time job dispatches, updates, and customer reminders straight to your team's mobile devices via secure SMS and voice triggers.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800/80 hover:border-slate-700 transition-all hover:shadow-xl hover:shadow-cyan-500/5 group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Real-time Appointment Scheduling</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Allow customers to request and confirm appointment slots effortlessly through multi-channel booking automation and automated calendar sync.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800/80 hover:border-slate-700 transition-all hover:shadow-xl hover:shadow-cyan-500/5 group">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">24/7 AI Receptionist & Routing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Never miss an inbound lead or dispatch emergency. Our intelligent front-desk routing answers inquiries and collects lead data day or night.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & INTAKE FORM (CRITICAL A2P OPT-IN SECTION) -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="mb-8">
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 block mb-2">Service Intake</span>
+                    <h2 class="text-3xl font-extrabold text-white">Get Started with FrontDesk Dispatch</h2>
+                    <p class="text-slate-400 text-sm mt-2">Fill out the intake form below to request information or dispatch service setup.</p>
+                </div>
+
+                <!-- Success Alert -->
+                <div id="success-alert" class="hidden mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium">
+                    Thank you for your submission! Our dispatch team will contact you shortly via SMS/Phone.
+                </div>
+
+                <form id="dispatch-intake-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fullName" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10" placeholder="5550000000" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label for="industry" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Industry *</label>
+                            <select id="industry" name="industry" required class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                                <option value="hvac">HVAC</option>
+                                <option value="plumbing">Plumbing</option>
+                                <option value="electrical">Electrical</option>
+                                <option value="general-contracting">General Contracting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="serviceNeeded" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Service Needed</label>
+                        <select id="serviceNeeded" name="serviceNeeded" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors text-sm">
+                            <option value="automated-dispatch">Automated SMS Dispatch</option>
+                            <option value="appointment-scheduling">Appointment Scheduling</option>
+                            <option value="ai-receptionist">24/7 AI Receptionist</option>
+                            <option value="full-suite">Full Platform Integration</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">How can we help you? *</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Tell us about your dispatch or customer communication requirements..." class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 transition-colors text-sm resize-none"></textarea>
+                    </div>
+
+                    <!-- MANDATORY A2P 10DLC CONSENT CHECKBOX -->
+                    <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800/80">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="smsConsent" name="smsConsent" required class="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-900 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-slate-900">
+                            <span class="text-xs text-slate-400 leading-relaxed">
+                                By checking this box and providing your phone number, you agree to receive automated customer service and dispatch SMS updates from FrontDesk Dispatch (BALI Technologies LLC). Message frequency varies. Message and data rates may apply. Reply STOP to cancel at any time, or HELP for assistance. View our <button type="button" onclick="openModal('privacy-modal')" class="text-cyan-400 underline hover:text-cyan-300">Privacy Policy</button> and <button type="button" onclick="openModal('terms-modal')" class="text-cyan-400 underline hover:text-cyan-300">Terms & Conditions</button>.
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-base shadow-lg shadow-cyan-500/20 transition-all">
+                        Submit Intake Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+                <span class="font-bold text-slate-200">FrontDesk Dispatch</span>
+                <span class="hidden sm:inline text-slate-700">|</span>
+                <span class="text-xs text-slate-500">© 2026 BALI Technologies LLC. All rights reserved.</span>
+            </div>
+
+            <div class="flex items-center gap-6 text-xs text-slate-400">
+                <button onclick="openModal('privacy-modal')" class="hover:text-cyan-400 transition-colors">Privacy Policy</button>
+                <button onclick="openModal('terms-modal')" class="hover:text-cyan-400 transition-colors">Terms & Conditions</button>
+                <a href="mailto:support@frontdeskdispatch.com" class="hover:text-cyan-400 transition-colors">support@frontdeskdispatch.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRIVACY POLICY MODAL (CARRIER COMPLIANT) -->
+    <div id="privacy-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+            <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white">Privacy Policy</h3>
+                <button onclick="closeModal('privacy-modal')" class="text-slate-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>BALI Technologies LLC operates FrontDesk Dispatch. We respect your privacy and are committed to protecting your personal information. We collect contact details provided via our web form solely to deliver customer service and dispatch updates.</p>
+                <p class="p-4 bg-slate-950 rounded-xl border border-slate-800 text-slate-200 font-medium">
+                    No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+                </p>
+                <p>If you have any questions regarding our Privacy Policy or data retention, please contact us at <a href="mailto:support@frontdeskdispatch.com" class="text-cyan-400 underline">support@frontdeskdispatch.com</a>.</p>
+            </div>
+            <div class="p-4 border-t border-slate-800 text-right">
+                <button onclick="closeModal('privacy-modal')" class="px-5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS MODAL (CARRIER COMPLIANT) -->
+    <div id="terms-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+            <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white">Terms & Conditions / Terms of Service</h3>
+                <button onclick="closeModal('terms-modal')" class="text-slate-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>Welcome to FrontDesk Dispatch, managed by BALI Technologies LLC. By utilizing our services or opting into SMS communication, you agree to these Terms and Conditions.</p>
+                <p class="p-4 bg-slate-950 rounded-xl border border-slate-800 text-slate-200 font-medium">
+                    By opting in to SMS notifications, you agree to receive automated customer service and dispatch updates from FrontDesk Dispatch. Message frequency varies. Message and data rates may apply. Reply STOP to cancel at any time, or HELP for assistance.
+                </p>
+                <p>You may unsubscribe at any time by texting STOP to our short code or local number. For additional support, contact <a href="mailto:support@frontdeskdispatch.com" class="text-cyan-400 underline">support@frontdeskdispatch.com</a>.</p>
+            </div>
+            <div class="p-4 border-t border-slate-800 text-right">
+                <button onclick="closeModal('terms-modal')" class="px-5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTION & WEBHOOK -->
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const form = document.getElementById('dispatch-intake-form');
+            const alertBox = document.getElementById('success-alert');
+            const submitBtn = document.getElementById('submit-btn');
+
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const formData = {
+                full_name: document.getElementById('fullName')?.value || "",
+                email: document.getElementById('email')?.value || "",
+                phone: (document.getElementById('phone')?.value || "").replace(/\D/g, ''),
+                service_type: document.getElementById('serviceNeeded')?.value || "Automated SMS Dispatch",
+                message: document.getElementById('message')?.value || "",
+                industry: document.getElementById('industry')?.value || "other",
+                opt_in_consent: document.getElementById('smsConsent')?.checked || false,
+                submitted_at: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch("https://hook.us2.make.com/9yribpas3tfml2rp3upg992rhp6tem89", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alertBox.classList.remove('hidden');
+                    form.reset();
+                    alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    alert("Submission failed. Please try again.");
+                }
+            } catch (err) {
+                console.error("Error submitting form:", err);
+                alert("An error occurred during submission. Please try again.");
+            } finally {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
