@@ -1,44 +1,65 @@
-async function handleFormSubmit(e) {
-    e.preventDefault();
+// js/form-handler.js
 
-    const form = document.getElementById('dispatch-intake-form');
-    const alertBox = document.getElementById('success-alert');
-    const submitBtn = document.getElementById('submit-btn');
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('dispatch-form') || document.querySelector('form');
 
-    const originalBtnText = submitBtn.innerText;
-    submitBtn.innerText = 'Submitting...';
-    submitBtn.disabled = true;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const formData = {
-        full_name: document.getElementById('fullName')?.value || "",
-        email: document.getElementById('email')?.value || "",
-        phone: (document.getElementById('phone')?.value || "").replace(/\D/g, ''),
-        service_type: document.getElementById('serviceNeeded')?.value || "Automated SMS Dispatch",
-        message: document.getElementById('message')?.value || "",
-        industry: document.getElementById('industry')?.value || "other",
-        opt_in_consent: document.getElementById('smsConsent')?.checked || false,
-        submitted_at: new Date().toISOString()
-    };
+      const phoneInput = document.getElementById('phone');
+      const phoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
 
-    try {
-        const response = await fetch("https://hook.us2.make.com/9yribpas3tfml2rp3upg992rhp6tem89", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
+      // Validate exact 10-digit phone requirement
+      if (phoneDigits.length !== 10) {
+        alert('Please enter a valid 10-digit phone number.');
+        if (phoneInput) {
+          phoneInput.focus();
+          phoneInput.classList.add('border-red-500'); // Optional visual cue
+        }
+        return; // Halts form submission completely
+      }
+
+      // Collect form data payload
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      
+      // Ensure formatted and raw phone digits are included
+      payload.phone = phoneInput ? phoneInput.value : '';
+      payload.raw_phone = phoneDigits;
+
+      try {
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.innerText = 'Submitting...';
+        }
+
+        // Replace with your Make.com Webhook URL if applicable
+        const response = await fetch(form.action || 'YOUR_MAKE_WEBHOOK_URL', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
         });
 
         if (response.ok) {
-            alertBox.classList.remove('hidden');
-            form.reset();
-            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          alert('Form submitted successfully!');
+          form.reset();
         } else {
-            alert("Submission failed. Please try again.");
+          alert('Submission failed. Please try again.');
         }
-    } catch (err) {
-        console.error("Error submitting form:", err);
-        alert("An error occurred during submission. Please try again.");
-    } finally {
-        submitBtn.innerText = originalBtnText;
-        submitBtn.disabled = false;
-    }
-}
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred. Please try again.');
+      } finally {
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerText = 'Submit';
+        }
+      }
+    });
+  }
+});
