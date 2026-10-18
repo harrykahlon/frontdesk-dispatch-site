@@ -1,8 +1,42 @@
 // js/form-handler.js
 const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/9yribpas3tfml2rp3upg992rhp6tem89'; // <--- PASTE YOUR MAKE WEBHOOK URL HERE
 
+function showFormStatus(message, isSuccess = true) {
+  const statusDiv = document.getElementById('form-status');
+  if (!statusDiv) return;
+
+  // Configure status banner styling
+  statusDiv.className = `rounded-lg p-4 mb-4 text-sm font-medium transition-all duration-200 ${
+    isSuccess 
+      ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400' 
+      : 'bg-red-500/10 border border-red-500/30 text-red-400'
+  }`;
+  
+  statusDiv.textContent = message;
+  statusDiv.classList.remove('hidden');
+
+  // Smooth scroll to notification if needed
+  statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  // Auto-hide error messages after 6 seconds (keep success messages visible)
+  if (!isSuccess) {
+    setTimeout(() => {
+      statusDiv.classList.add('hidden');
+    }, 6000);
+  }
+}
+
+function hideFormStatus() {
+  const statusDiv = document.getElementById('form-status');
+  if (statusDiv) {
+    statusDiv.classList.add('hidden');
+  }
+}
+
 async function handleFormSubmit(event) {
   if (event) event.preventDefault();
+
+  hideFormStatus();
 
   const form = event ? event.target : (document.getElementById('dispatch-intake-form') || document.querySelector('form'));
   const phoneInput = document.getElementById('phone');
@@ -10,7 +44,7 @@ async function handleFormSubmit(event) {
 
   // Validate exact 10-digit phone requirement
   if (phoneDigits.length !== 10) {
-    alert('Please enter a valid 10-digit phone number.');
+    showFormStatus('Please enter a valid 10-digit phone number.', false);
     if (phoneInput) phoneInput.focus();
     return false;
   }
@@ -38,19 +72,17 @@ async function handleFormSubmit(event) {
     });
 
     if (response.ok) {
-      // 1. Reset form fields immediately
       if (form) form.reset();
-
-      // 2. Reset button state immediately
+      
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.innerText = originalButtonText;
       }
 
-      // 3. Display confirmation message
-      alert('Form submitted successfully!');
+      showFormStatus('Thank you! Your request has been received. We will be in touch shortly.', true);
     } else {
-      alert('Submission failed. Please check webhook configuration.');
+      showFormStatus('Submission failed. Please try again or check your configuration.', false);
+      
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.innerText = originalButtonText;
@@ -58,7 +90,8 @@ async function handleFormSubmit(event) {
     }
   } catch (error) {
     console.error('Submission Error:', error);
-    alert('An error occurred during submission. Please try again.');
+    showFormStatus('An error occurred during submission. Please try again.', false);
+    
     if (submitButton) {
       submitButton.disabled = false;
       submitButton.innerText = originalButtonText;
