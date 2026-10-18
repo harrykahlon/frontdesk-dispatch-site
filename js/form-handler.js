@@ -1,5 +1,5 @@
 // js/form-handler.js
-const MAKE_WEBHOOK_URL = 'YOUR_MAKE_WEBHOOK_URL'; // <--- PASTE YOUR MAKE WEBHOOK URL HERE
+const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/9yribpas3tfml2rp3upg992rhp6tem89'; // <--- PASTE YOUR MAKE WEBHOOK URL HERE
 
 async function handleFormSubmit(event) {
   if (event) event.preventDefault();
