@@ -4,7 +4,7 @@ const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/9yribpas3tfml2rp3upg992rhp6t
 async function handleFormSubmit(event) {
   if (event) event.preventDefault();
 
-  const form = event ? event.target : (document.getElementById('dispatch-form') || document.querySelector('form'));
+  const form = event ? event.target : (document.getElementById('dispatch-intake-form') || document.querySelector('form'));
   const phoneInput = document.getElementById('phone');
   const phoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
 
@@ -38,15 +38,27 @@ async function handleFormSubmit(event) {
     });
 
     if (response.ok) {
-      alert('Form submitted successfully!');
+      // 1. Reset form fields immediately
       if (form) form.reset();
+
+      // 2. Reset button state immediately
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerText = originalButtonText;
+      }
+
+      // 3. Display confirmation message
+      alert('Form submitted successfully!');
     } else {
       alert('Submission failed. Please check webhook configuration.');
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerText = originalButtonText;
+      }
     }
   } catch (error) {
     console.error('Submission Error:', error);
     alert('An error occurred during submission. Please try again.');
-  } finally {
     if (submitButton) {
       submitButton.disabled = false;
       submitButton.innerText = originalButtonText;
@@ -57,7 +69,7 @@ async function handleFormSubmit(event) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('dispatch-form') || document.querySelector('form');
+  const form = document.getElementById('dispatch-intake-form') || document.querySelector('form');
   if (form) {
     form.addEventListener('submit', handleFormSubmit);
   }
